@@ -167,3 +167,19 @@ current_state = ('E', 1, 0, 'D', 50) action_taken = HIT reached_state = ('E', 1,
 ```
 
 # Task - 2
+
+
+####  Indiana now on the LEFT action at East Square will go to the West Square.
+
+Only one thing was obserably changed was that now IJ also possess policy for havng action `LEFT` for some states mainly states having MM in state `R`. Apart from this there wassn't much change by having above modification in the code. Also, the number of iterations required to converge for the algorithm is approximately same i.e. 120.
+
+#### The step cost of the STAY action is now zero.
+The outcome of the algorithm i.e. trace here significantly changes.
+* Total number of iterations required to converge decreased from `118` to `80`.
+* Count of action `LEFT` in position `E` increased much.
+* The count of action `STAY` abruptly increased in IJ's position of `W`. Because the reward is maximized by just remaining the same place and not doing anything. All other action are having `STEPCOST` negetive, except when IJ would attack and MM dies. However, the probability of that happening is so low that staying still remains beneficial.The stay action is highy preferred
+
+
+#### Change the value of gamma to 0.25
+
+The number of iterations for convergence of algorithm drastically decreased from `118` to `8`.
