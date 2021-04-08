@@ -433,24 +433,24 @@ def log_simulation(cs,action,pfs,file):
 # In[40]:
 
 
-start_state1 = ('W',0,0,'D',100)
-start_state2 = ('C',2,0,'R',100)
+# start_state1 = ('W',0,0,'D',100)
+# start_state2 = ('C',2,0,'R',100)
 
-file_sim = "outputs/simulations/2_2.txt"
-for k in range(10):
-    cs = start_state2
-    while cs[-1]!=0:
-        action = final_policy[cs]
-        pfstate = get_pfsb(cs, action)
-        weight = [ ts[-1] for ts in pfstate ]
-        fs = np.random.choice([ i for i in range(len(pfstate))],1,p = weight)
-        (pos,mat,arrow,state,health,prob) = pfstate[fs[0]]
-        pfs = (pos,mat,arrow,state,health)
-        log_simulation(cs,action,pfs,file_sim)
-        cs = pfs
-    with open(file_sim,'a+') as write_file:
-        write_file.write(f"\n-----------------------------------------------------------------------------------------------------\n\n")
-        write_file.close()
+# file_sim = "outputs/simulations/2_2.txt"
+# for k in range(10):
+#     cs = start_state2
+#     while cs[-1]!=0:
+#         action = final_policy[cs]
+#         pfstate = get_pfsb(cs, action)
+#         weight = [ ts[-1] for ts in pfstate ]
+#         fs = np.random.choice([ i for i in range(len(pfstate))],1,p = weight)
+#         (pos,mat,arrow,state,health,prob) = pfstate[fs[0]]
+#         pfs = (pos,mat,arrow,state,health)
+#         log_simulation(cs,action,pfs,file_sim)
+#         cs = pfs
+#     with open(file_sim,'a+') as write_file:
+#         write_file.write(f"\n-----------------------------------------------------------------------------------------------------\n\n")
+#         write_file.close()
 
 
 # In[ ]:
