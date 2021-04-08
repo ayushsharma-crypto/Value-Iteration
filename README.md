@@ -38,9 +38,86 @@ iteration=1
 ```
 
 
-## Interpretation, Analysis & Comments
+## Interpretation, Comments & Analysis
 
+Some statistics on the trace obtained are:-
+>- Iterations: It took 118 iterations to reach convergence.
+>- Gamma : 0.999
+>- Delta : 0.001
+>- Step Cost : -10
 
+**Analysis from `trace`:-**
+
+* Changing values of `gamma` leads to difference in gains. Low value lead to short-term gain policy and larger value to long-term gain policy.  Asymptotically, if `gamma ~ 1`, then we'll be getting policies that optimizes gain over infinite time. On the other hand, value iteration will be slower to converge.
+
+* The tendency of IJ to `SHOOT` MM is very low, when IJ is in square `C`. Actually, there were only `4` instances where action for a given state in policy is `SHOOT`. For this , reason can be low success rate i.e. low probability to reach terminal state.
+
+* We found that for position 'C' , IJ never took action `STAY`. This can be reasoned as to prevent the negetive reward of `-40` when MM is in `Ready` state and attacks, also less probability of damage happen due to action either `SHOOT` or `HIT`.
+
+* We found when in position `E`, IJ always attempt to shoot the MM as there is less probability of MM transitions from `D` state `->` `R` state and opposite. i.e. `0.2` & `0.5` respectively.
+
+* Total count of `SHOOT` action is more than `HIT` action. This can be because of higher probability of Damage using arrow than blade.
+
+* We can notice our model i.e. `IJ` to be risk-seeking because when reaching square `E`, IJ always try to `HIT` or `SHOOT` instead of fact whether MM is in `R` state or `D` state.
+
+* We found following count of actions for every non-terminal state classified by positions of IJ.
+```
+Place =  C
+count of  UP  =  27
+count of  Left  =  0
+count of  RIGHT  =  43
+count of  DOWN  =  15
+count of  LEFT  =  6
+count of  HIT  =  0
+count of  SHOOT  =  5
+count of  STAY  =  0
+count of  CRAFT  =  0
+count of  GATHER  =  0
+Place =  E
+count of  UP  =  0
+count of  Left  =  0
+count of  RIGHT  =  0
+count of  DOWN  =  0
+count of  LEFT  =  0
+count of  HIT  =  39
+count of  SHOOT  =  57
+count of  STAY  =  0
+count of  GATHER  =  0
+count of  CRAFT  =  0
+Place =  W
+count of  UP  =  0
+count of  Left  =  0
+count of  RIGHT  =  59
+count of  DOWN  =  0
+count of  LEFT  =  0
+count of  HIT  =  0
+count of  SHOOT  =  24
+count of  STAY  =  13
+count of  GATHER  =  0
+count of  CRAFT  =  0
+Place =  S
+count of  UP  =  54
+count of  Left  =  0
+count of  RIGHT  =  0
+count of  DOWN  =  0
+count of  LEFT  =  0
+count of  HIT  =  0
+count of  SHOOT  =  0
+count of  STAY  =  32
+count of  GATHER  =  10
+count of  CRAFT  =  0
+Place =  N
+count of  UP  =  0
+count of  Left  =  0
+count of  RIGHT  =  0
+count of  DOWN  =  34
+count of  LEFT  =  0
+count of  HIT  =  0
+count of  SHOOT  =  0
+count of  STAY  =  24
+count of  GATHER  =  0
+count of  CRAFT  =  38
+```
 
 ## Simulations
 
@@ -48,7 +125,7 @@ We have simulate the game for obtained `utility` and `policy` on two start state
 * (W, 0, 0, D, 100)
 * (C, 2, 0, R, 100)
 
-**The order of the actions, the state transitions and comment on the results for above start states:** We ran simulations `10` times fr both start state and found that every time it reaches the terminal state i.e. state with last value `0` like `('S', 0, 2, 'R', 0)` and `('E', 0, 0, 'R', 0)`. One of the output is shown below for each start state. One can find all the obtained outputs on running simulation in `outputs/simulations/2_1.txt` file.
+**The order of the actions, the state transitions and comment on the results for above start states:** We ran simulations `10` times for both start state and found that every time it reaches the terminal state i.e. state with last value `0` like `('S', 0, 2, 'R', 0)` and `('E', 0, 0, 'R', 0)`. One of the output is shown below for each start state. One can find all the obtained outputs on running simulation in `outputs/simulations/2_1.txt` file.
 
 ### `(W, 0, 0, D, 100)`
 
